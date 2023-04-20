@@ -1,4 +1,6 @@
-import openai, os
+import openai, os # TODO: dotenv.load_dotenv(); apikey = os.getenv('apikey' || apikey_default); initialize api key
+
+# T
 
 
 MODEL_NAME = 'whisper-1'
