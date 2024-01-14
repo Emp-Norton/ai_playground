@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Georgia:wght@400&display=swap">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter Generator</title>
+</head>
+<body>
+    <h1>Cover Letter Generator</h1>
+    <form>
+        <label>
+            Job Description:
+            <textarea id="jobDescription" name="jobDescription"></textarea>
+        </label>
+        <br>
+        <label>
+            Resume:
+            <textarea id="resume" name="resume"></textarea>
+        </label>
+        <br>
+        <button type="button" onclick="handleSubmit()">Generate Cover Letter</button>
+
+        <script>
+            async function handleSubmit() {
+                const jobDescription = document.getElementById('jobDescription').value;
+                const resume = document.getElementById('resume').value;
+
+                // Make a POST request to the server
+                const response = await fetch('/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ jobDescription, resume }),
+                });
+
+                const data = await response.json();
+                console.log(data); // Handle the response as needed
+            }
+        </script>
+    </form>
+</body>
+</html>
